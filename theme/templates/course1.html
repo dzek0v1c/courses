@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Изучение темы индивидуального проекта</title>
+  <!-- Подключаем Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Подключаем Animate.css -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <style>
+    .custom-margin {
+        margin-top: 100px; /* Пример значения отступа */
+    }
+</style>
+</head>
+<body>
+  <header data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Главная страница</a>
+            </li>
+            <li class="nav-item">
+              {% if user.email %}
+              <a class="nav-link" href="{% url 'profile' %}">Профиль</a>
+              {% else %}
+              <a class="nav-link" href="{% url 'auth' %}">Профиль</a>
+              {% endif %}
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
+            <button class="btn btn-outline-success" type="submit">Искать</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container mt-5 animate__animated animate__fadeIn">
+    <h1 class="custom-margin" >Изучение темы индивидуального проекта</h1>
+    <p class="lead">Здесь вы найдете информацию о том, как грамотно подойти к изучению и выбору темы для индивидуального проекта.</p>
+    
+    <div class="alert alert-info" role="alert">
+      Не забывайте записывать свои мысли, результаты и вопросы в процессе изучения. Это поможет вам удержать важную информацию и определить дальнейшие шаги.
+    </div>
+
+    <div class="card mt-4" id="osnovy">
+      <div class="card-header">
+        Подготовка к изучению
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Шаг 1: Изучение основ</h5>
+        <p class="card-text">Начните с изучения основных концепций и принципов, связанных с вашей темой. Используйте различные источники информации, включая учебники, онлайн-курсы и документацию.</p>
+        
+        <h5 class="card-title mt-4" id="praktika">Шаг 2: Практика и эксперименты</h5>
+        <p class="card-text">После теоретической подготовки переходите к практическим заданиям и экспериментам. Создавайте прототипы, проводите тестирование и анализируйте результаты.</p>
+      </div>
+    </div>
+
+    <div class="row justify-content-between mt-3">
+      <div class="col-auto">
+        <a href="{% url 'course6' %}" class="btn btn-primary btn-lg animate__animated animate__fadeInUp" role="button">Вернуться на курс 6</a>
+      </div>
+      <div class="col-auto">
+        <button type="button" class="btn btn-primary" onclick="markAsRead()">Прочитано</button>
+      </div>
+      <div class="col-auto">
+        <a href="{% url 'course2' %}" class="btn btn-primary btn-lg animate__animated animate__fadeInUp" role="button">Перейти к курсу 2</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="mt-5 text-center">
+    <p>&copy; 2024 Тимурик. Все права защищены.</p>
+  </footer>
+
+  <!-- Подключаем Bootstrap JS (необходим для некоторых компонентов) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Скрипт для плавного скроллинга при переходе по ссылкам -->
+  <script>
+    $(document).ready(function(){
+      $("a").on('click', function(event) {
+        if (this.hash !== "") {
+          event.preventDefault();
+          var hash = this.hash;
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 800, function(){
+            window.location.hash = hash;
+          });
+        }
+      });
+    });
+
+    function markAsRead() {
+      alert('Красавчик, выдержал!');
+      // Дополнительные действия после нажатия на кнопку, например, сохранение статуса прочтения
+    }
+  </script>
+</body>
+</html>
+
+

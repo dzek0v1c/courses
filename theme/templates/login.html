@@ -1,0 +1,115 @@
+{% load static %}
+<head>   
+<title>Login Page</title>
+<link href="{% static "theme/css/login.css" %}" rel="stylesheet">
+</head>
+
+<body>
+<div class="materialContainer">
+
+    <div class="box">
+      <form id="loginForm" action="{% url 'login' %}" method="POST">
+       <div class="title">LOGIN</div>
+ 
+       <div class="input">
+          <label for="name">Username</label>
+          <input type="text" name="name" id="name">
+          <span class="spin"></span>
+       </div>
+ 
+       <div class="input">
+          <label for="pass">Password</label>
+          <input type="password" name="pass" id="pass">
+          <span class="spin"></span>
+       </div>
+ 
+       <div class="button login">
+          <button><span>GO</span> <i class="fa fa-check"></i></button>
+       </div>
+ 
+       <a href="" class="pass-forgot">Forgot your password?</a>
+      </form>
+   </div>
+ 
+   <div class="overbox">
+      <form id="registerForm" action="{% url 'register' %}" method="POST">
+       <div class="material-button alt-2"><span class="shape"></span></div>
+ 
+       <div class="title">REGISTER</div>
+ 
+       <div class="input">
+          <label for="regname">Username</label>
+          <input type="text" name="regname" id="regname">
+          <span class="spin"></span>
+       </div>
+ 
+       <div class="input">
+          <label for="regpass">Password</label>
+          <input type="password" name="regpass" id="regpass">
+          <span class="spin"></span>
+       </div>
+ 
+       <div class="input">
+          <label for="reregpass">Repeat Password</label>
+          <input type="password" name="reregpass" id="reregpass">
+          <span class="spin"></span>
+       </div>
+ 
+       <div class="button">
+          <button><span>NEXT</span></button>
+       </div>
+      </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static "theme/js/login.js" %}"></script> 
+ </div>
+
+ <script>
+ $(document).ready(function() {
+    $('#loginForm').on('submit', function(e) {
+        e.preventDefault();
+        var userData = {
+            username: $('#name').val(),
+            password: $('#pass').val()
+        };
+
+        // Исправлен путь для входа в систему в соответствии с urls.py
+        $.post('/auth/login', userData, function(data) {
+            console.log('Login successful', data);
+            // Редирект или обновление страницы после логина, если необходимо
+            window.location.href = '/'; // Укажите нужный путь для редиректа после успешного логина
+        }).fail(function() {
+            alert('Login failed');
+        });
+    });
+
+    $('#registerForm').on('submit', function(e) {
+        e.preventDefault();
+
+        var password1 = $('#regpass').val();
+        var password2 = $('#reregpass').val();
+        if (password1 !== password2) {
+            alert('Passwords do not match.');
+            return;
+        }
+
+        var userData = {
+            email: $('#regname').val(),
+            password1: password1,
+            password2: password2,
+        };
+
+
+        $.post('/auth/register', userData)
+        .done(function(data) {
+            console.log('Registration successful', data);
+           
+            window.location.href = '/';
+        })
+        .fail(function() {
+            alert('Registration failed');
+        });
+    });
+});
+</script>
+</body>

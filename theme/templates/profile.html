@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <!-- Подключаем Bootstrap CSS через CDN -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Стили для улучшения внешнего вида */
+    body {
+      background-color: #f8f9fa;
+    }
+    .profile-card {
+      max-width: 500px;
+      margin: 50px auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+    }
+    .profile-avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="profile-card">
+      <div class="profile-avatar">
+        <img src="https://via.placeholder.com/150" alt="Avatar" class="img-fluid">
+      </div>
+      <h2 class="text-center mb-4">John Doe</h2>
+      <p class="text-muted text-center">Frontend Developer</p>
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <p><strong>Email:</strong> johndoe@example.com</p>
+          <p><strong>Location:</strong> New York, USA</p>
+          <p><strong>Skills:</strong> HTML, CSS, JavaScript</p>
+        </div>
+        <div class="col-md-6">
+          <p><strong>Phone:</strong> +1 234 567 890</p>
+          <p><strong>Website:</strong> <a href="#">johndoe.com</a></p>
+          <p><strong>LinkedIn:</strong> <a href="#">linkedin.com/in/johndoe</a></p>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <button class="btn btn-primary">Edit Profile</button>
+        <button class="btn btn-outline-secondary ml-2">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Подключаем Bootstrap JS через CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

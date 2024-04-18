@@ -1,0 +1,376 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.122.0">
+    <title>Курсы от Тимурика</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+
+
+    <link href=" {% static 'theme/css/bootstrap.min.css' %}" rel = "stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="{% static 'theme/css/carousel.css' %}" rel="stylesheet">
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+      </symbol>
+    </svg>
+
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+      <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+              id="bd-theme"
+              type="button"
+              aria-expanded="false"
+              data-bs-toggle="dropdown"
+              aria-label="Toggle theme (auto)">
+        <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
+        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+            Light
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+            Dark
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
+            Auto
+            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    
+<header data-bs-theme="dark">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Главная страница</a>
+          </li>
+          <li class="nav-item">
+            {% if user.email %}
+            <a class="nav-link" href="{% url 'profile' %}">Профиль</a>
+            {% else %}
+            <a class="nav-link" href="{% url 'auth' %}">Профиль</a>
+            {% endif %}
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
+          <button class="btn btn-outline-success" type="submit">Искать</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1>Изучение темы проекта.</h1>
+            <p class="opacity-75">Определение целей и задач, изучение литературы и источников информации, проведение исследований.</p>
+            <p><a class="btn btn-lg btn-primary" href="{% url 'course1' %}">Читать больше</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Планирование проекта.</h1>
+            <p>Разработка структуры проекта, определение методов и инструментов, установление сроков выполнения задач.</p>
+            <p><a class="btn btn-lg btn-primary" href="{% url 'course2' %}">Читать больше</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <div class="container">
+          <div class="carousel-caption text-end">
+            <h1>Сбор и анализ данных.</h1>
+            <p> Сбор необходимой информации, обработка данных, проведение анализа результатов.</p>
+            <p><a class="btn btn-lg btn-primary" href="{% url 'course3' %}">Читать больше</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item ">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1>Разработка концепции проекта.</h1>
+            <p class="opacity-75">Создание основных идей и концепции проекта, формулирование основных выводов и рекомендаций.</p>
+            <p><a class="btn btn-lg btn-primary" href="{% url 'course4' %}">Читать больше</a></p>
+          </div>
+        </div>
+      </div>
+        <div class="carousel-item ">
+          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Подготовка презентации и отчета.</h1>
+              <p class="opacity-75">Подготовка материалов для презентации проекта, написание отчета о проделанной работе, оформление результатов и выводов.</p>
+              <p><a class="btn btn-lg btn-primary" href="{% url 'course5' %}">Читать больше</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item ">
+          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="https://w7.pngwing.com/pngs/96/688/png-transparent-gears-and-pie-chart-illustration-implementation-icon-gears-and-arrow-search-engine-optimization-text-service.png" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+          <div class="container">
+            <div class="carousel-caption text-end">
+              <h1>Реализация проекта.</h1>
+              <p class="opacity-75">Выполнение плана действий, координация работы команды, контроль за выполнением задач, решение возникающих проблем и вопросов.</p>
+              <p><a class="btn btn-lg btn-primary" href="{% url 'course6' %}">Читать больше</a></p>
+            </div>
+          </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="https://cdn-icons-png.flaticon.com/512/8668/8668568.png" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <h2 class="fw-normal">Изучение темы проекта.</h2>
+        <p>Определение целей и задач, изучение литературы и источников информации, проведение исследований.</p>
+        <p><a class="btn btn-secondary" href="{% url 'course1' %}">Изучить больше &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="https://c0.klipartz.com/pngpicture/612/568/gratis-png-plan-de-negocios-plan-de-marketing-negocios-thumbnail.png" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <h2 class="fw-normal">Планирование проекта.</h2>
+        <p>Разработка структуры проекта, определение методов и инструментов, установление сроков выполнения задач.</p>
+        <p><a class="btn btn-secondary" href="{% url 'course2' %}">Изучить больше &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="https://cdn.icon-icons.com/icons2/1860/PNG/512/analytics_118088.png" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <h2 class="fw-normal">Сбор и анализ данных.</h2>
+        <p>Сбор необходимой информации, обработка данных, проведение анализа результатов.</p>
+        <p><a class="btn btn-secondary" href="{% url 'course3' %}">Изучить больше &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+    <div class="row">
+      <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="https://png.pngtree.com/png-clipart/20240206/original/pngtree-great-idea-concept-development-photo-png-image_14252263.png" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <h2 class="fw-normal">Разработка концепции проекта.</h2>
+        <p>Создание основных идей и концепции проекта, формулирование основных выводов и рекомендаций.</p>
+        <p><a class="btn btn-secondary" href="{% url 'course4' %}">Изучить больше &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="data:image/png;base64,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" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <h2 class="fw-normal">Подготовка презентации и отчета.</h2>
+        <p>Подготовка материалов для презентации проекта, написание отчета о проделанной работе, оформление результатов и выводов.</p>
+        <p><a class="btn btn-secondary" href="{% url 'course5' %}">Изучить больше &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="https://w7.pngwing.com/pngs/96/688/png-transparent-gears-and-pie-chart-illustration-implementation-icon-gears-and-arrow-search-engine-optimization-text-service.png" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <h2 class="fw-normal">Реализация проекта.
+        </h2>
+        <p>Выполнение плана действий, координация работы команды, контроль за выполнением задач, решение возникающих проблем и вопросов.</p>
+        <p><a class="btn btn-secondary" href="{% url 'course6' %}">Изучить больше &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">Немного про меня</h2>
+        <p class="lead">Меня зовут Михайлов Тимур. Я ученик 10 a класса. Этот сайт является моей проектной работой</p>
+      </div>
+      <div class="col-md-5">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src ="https://drasler.ru/wp-content/uploads/2019/05/%D0%9A%D0%BB%D0%B0%D1%81%D1%81%D0%BD%D1%8B%D0%B5-%D0%B8-%D0%BA%D1%80%D1%83%D1%82%D1%8B%D0%B5-%D1%84%D0%BE%D1%82%D0%BE-500-x-500-%D0%BF%D0%BE%D0%B4%D0%B1%D0%BE%D1%80%D0%BA%D0%B0-001.jpg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">Что вас здесь ожидает?</h2>
+        <p class="lead">Если у вас возинкли трудности с проектной работой, то этот сайт поможет тебе их решить! На сайте есть 6 курсов, которые тебе помогут сдать проектную работу хорошо! </p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="https://papik.pro/grafic/uploads/posts/2023-04/thumbs/1681151176_papik-pro-p-nakleiki-dlya-prezentatsii-powerpoint-23.jpg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">Почему этот сайт существует?</h2>
+        <p class="lead">Ученики в 10 и/или в 11 классе сдают индивидуальный проект, который они делают чуть больше полгода. Этот сайт создан для того, чтобы объяснить, как делать проект.</p>
+      </div>
+      <div class="col-md-5">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="https://static.tildacdn.com/tild3239-3438-4066-b766-653737366634/9793214_4195199.jpg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/></svg>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-end"><a href="#">Вернутся на верх страницы</a></p>
+    <p>&copy; 2024 Company, Inc. &middot; <a href="#">Privacy</a> &middot; </p>
+  </footer>
+</main>
+        <script src="{% static 'theme/js/bootstrap.bundle.min.js' %}"></script>
+
+    </body>
+</html>

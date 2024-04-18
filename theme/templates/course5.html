@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Подготовка презентации и отчета</title>
+  <!-- Подключаем Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <style>
+    .custom-margin {
+        margin-top: 100px; /* Пример значения отступа */
+    }
+</style>
+</head>
+<body>
+  <header data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Главная страница</a>
+            </li>
+            <li class="nav-item">
+              {% if user.email %}
+              <a class="nav-link" href="{% url 'profile' %}">Профиль</a>
+              {% else %}
+              <a class="nav-link" href="{% url 'auth' %}">Профиль</a>
+              {% endif %}
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
+            <button class="btn btn-outline-success" type="submit">Искать</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="container">
+    <h1 class="custom-margin">Подготовка презентации и отчета</h1>
+    <p class="lead">Здесь вы найдете информацию о ключевых шагах подготовки эффективной презентации и отчета по проекту.</p>
+    
+    <div class="row mt-4">
+      <div class="col-lg-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Структурирование информации</h5>
+            <p class="card-text">Определите основные разделы и подразделы презентации/отчета. Составьте план и распределите информацию логически.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Создание контента</h5>
+            <p class="card-text">Напишите текст презентации/отчета, подготовьте графику, диаграммы и другие визуальные элементы для наглядности.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Дизайн и оформление</h5>
+            <p class="card-text">Выберите подходящий дизайн и шаблон для презентации/отчета. Обратите внимание на цветовую схему, шрифты и изображения.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Подготовка к выступлению</h5>
+            <p class="card-text">Если вы делаете презентацию для выступления, проведите тренировки, подготовьте заметки и оборудование для презентации.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-4" role="alert">
+      После подготовки презентации/отчета не забывайте провести проверку на ошибки и сделать несколько пробных презентаций/отчетов для получения обратной связи.
+    </div>
+     
+    <div class="row justify-content-between mt-3">
+      <div class="col-auto">
+        <a href="{% url 'course4' %}" class="btn btn-primary btn-lg animate__animated animate__fadeInUp" role="button">Вернуться на курс 4</a>
+      </div>
+      <div class="col-auto">
+        <button type="button" class="btn btn-primary" onclick="markAsRead()">Прочитано</button>
+      </div>
+      <div class="col-auto">
+        <a href="{% url 'course6' %}" class="btn btn-primary btn-lg animate__animated animate__fadeInUp" role="button">Перейти к курсу 6</a>
+      </div>
+    </div>
+  </div>
+
+    <footer class="mt-5 text-center">
+      <p>&copy; 2024 ВашТимурик. Все права защищены.</p>
+    </footer>
+  </div>
+
+  <!-- Подключаем Bootstrap JS (необходим для некоторых компонентов) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Скрипт для плавного скроллинга при переходе по ссылкам -->
+  <script>
+    $(document).ready(function(){
+      $("a").on('click', function(event) {
+        if (this.hash !== "") {
+          event.preventDefault();
+          var hash = this.hash;
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 800, function(){
+            window.location.hash = hash;
+          });
+        }
+      });
+    });
+
+    function markAsRead() {
+      alert('Красавчик, выдержал!');
+      // Дополнительные действия после нажатия на кнопку, например, сохранение статуса прочтения
+    }
+  </script>
+</body>
+</html>

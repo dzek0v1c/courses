@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Реализация проекта</title>
+  <!-- Подключаем Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <style>
+    .custom-margin {
+        margin-top: 100px; /* Пример значения отступа */
+    }
+</style>
+</head>
+<body>
+  <header data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Главная страница</a>
+            </li>
+            <li class="nav-item">
+              {% if user.email %}
+              <a class="nav-link" href="{% url 'profile' %}">Профиль</a>
+              {% else %}
+              <a class="nav-link" href="{% url 'auth' %}">Профиль</a>
+              {% endif %}
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
+            <button class="btn btn-outline-success" type="submit">Искать</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="container">
+    <h1 class="custom-margin">Реализация проекта</h1>
+    <p class="lead">Здесь вы найдете информацию о ключевых шагах реализации проекта от начала до завершения.</p>
+    
+    <div class="row mt-4">
+      <div class="col-lg-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Планирование и подготовка</h5>
+            <p class="card-text">Составьте детальный план действий, выделите ресурсы и определите ответственных. Подготовьте окружение для работы.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Разработка и тестирование</h5>
+            <p class="card-text">Начните разработку проекта, следуя плану. Проводите тестирование и корректировки для обеспечения качества.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Внедрение и поддержка</h5>
+            <p class="card-text">Выполните внедрение проекта в реальной среде. Обеспечьте поддержку и обучение пользователей при необходимости.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-4" role="alert">
+      Не забывайте о регулярном обновлении и поддержке проекта после внедрения, а также обратной связи от пользователей для улучшения.
+    </div>
+   
+    <div class="row justify-content-between mt-3">
+      <div class="col-auto">
+        <a href="{% url 'course5' %}" class="btn btn-primary btn-lg animate__animated animate__fadeInUp" role="button">Вернуться на курс 5</a>
+      </div>
+      <div class="col-auto">
+        <button type="button" class="btn btn-primary" onclick="markAsRead()">Прочитано</button>
+      </div>
+      <div class="col-auto">
+        <a href="{% url 'course1' %}" class="btn btn-primary btn-lg animate__animated animate__fadeInUp" role="button">Перейти к курсу 1</a>
+      </div>
+    </div>
+  </div>
+
+    <footer class="mt-5 text-center">
+      <p>&copy; 2024 Ваш Тимурик. Все права защищены.</p>
+    </footer>
+  </div>
+
+  <!-- Подключаем Bootstrap JS (необходим для некоторых компонентов) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Скрипт для плавного скроллинга при переходе по ссылкам -->
+  <script>
+    $(document).ready(function(){
+      $("a").on('click', function(event) {
+        if (this.hash !== "") {
+          event.preventDefault();
+          var hash = this.hash;
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 800, function(){
+            window.location.hash = hash;
+          });
+        }
+      });
+    });
+
+    function markAsRead() {
+      alert('Красавчик, выдержал!');
+      // Дополнительные действия после нажатия на кнопку, например, сохранение статуса прочтения
+    }
+  </script>
+</body>
+</html>
